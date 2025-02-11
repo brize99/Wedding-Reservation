@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift & Jate Wedding - Seat Reservation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(to bottom right, #f8f0e3, #f5e7db);
+            color: #444;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
+            max-width: 500px; /* Narrower for mobile */
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background Image (Optional - Replace with your image path) */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("path/to/your/floral-background.jpg"); /* Replace with actual path */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            color: #7a5737;
+            margin-bottom: 15px; /* Adjusted spacing */
+            font-size: 2.5em; /* Larger headline */
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            color: #7a5737;
+            margin-bottom: 25px; /* Adjusted spacing */
+            font-size: 1.8em; /* Slightly larger subheading */
+        }
+
+
+        .wedding-info {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 25px 15px; /* Adjusted padding for smaller screens */
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .wedding-info h3 {
+            font-family: 'Playfair Display', serif;
+            color: #7a5737;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #7a5737;
+            outline: none;
+            box-shadow: 0 0 5px rgba(#7a5737, 0.2);
+        }
+
+        button {
+            background-color: #7a5737;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #644529;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .wedding-info {
+                padding: 20px;
+            }
+
+            input, select, textarea, button {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .container {
+                padding: 30px 15px;
+            }
+
+            .wedding-info {
+                padding: 15px 10px;
+            }
+
+            input, select, textarea, button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Gift & Jate Wedding</h1>
+    <h2>Ceremony Seat Reservation</h2>
+
+    <p>We are so excited to celebrate our wedding with you! Please reserve your seats for the ceremony by filling out the form below. Your presence at this special occasion means the world to us.</p>
+
+    <div class="wedding-info">
+        <h3>Wedding Location</h3>
+        <p>Our wedding will be held at the beautiful Capella Bangkok Hotel.</p>
+        <h3>Room Details</h3>
+        <p>Our wedding space will be allocated into two rooms after the tea ceremony: The Family Room on the right balcony and the Friends Room on the left side. Please select your room accordingly. Thank you!</p>
+    </div>
+
+    <form action="YOUR_GOOGLE_SHEET_URL" method="POST" name="weddingReservationForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="Name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="Email" required>
+        </div>
+        <div class="form-group">
+            <label for="contact">Contact Number:</label>
+            <input type="tel" id="contact" name="Contact" required>
+        </div>
+        <div class="form-group">
+            <label for="guests">Number of Guests:</label>
+            <input type="number" id="guests" name="Guests" min="1" required>
+        </div>
+        <div class="form-group">
+            <label for="room">Room Preference:</label>
+            <select id="room" name="Room" required>
+                <option value="">Select a Room</option>
+                <option value="Family">Family Room</option>
+                <option value="Friends">Friends Room</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="allergies">Food Allergies (Please specify):</label>
+            <textarea id="allergies" name="Allergies" rows="4"></textarea>
+        </div>
+
+        <button type="submit">Reserve Your Seats</button>
+    </form>
+
+    <div class="footer">
+        <p>Thank you for celebrating with us!</p>
+    </div>
+</div>
+
+<script>
+    // ... (Your JavaScript code for form submission and Google Apps Script integration goes here)
+</script>
+
+</body>
+</html>
