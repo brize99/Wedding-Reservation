@@ -190,7 +190,7 @@
         <p>Our wedding space will be allocated into two rooms after the tea ceremony: The Family Room on the right balcony and the Friends Room on the left side. Please select your room accordingly. Thank you!</p>
     </div>
 
-    <form action="https://script.google.com/macros/s/AKfycbxyxjnYU0W6Nj6UPd5i_nn1Vb1HBsvNxZo9NmDPOpa4YDcbRHOqSeTCX3sd_lH0V_jYtA/exec" method="POST" name="weddingReservationForm">
+    <form action="https://script.google.com/macros/s/AKfycbwFWirsLP4Ua0cfzn-KY7Tzp_5vZzMPCzR9lOZqIh8FhI9f_LRp8FuE0OP9cZ9TYNgp9A/exec" method="POST" name="weddingReservationForm">
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" name="Name" required>
@@ -229,7 +229,44 @@
 </div>
 
 <script>
-    // ... (Your JavaScript code for form submission and Google Apps Script integration goes here)
+    document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form[name="weddingReservationForm"]');
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        const button = form.querySelector('button[type="submit"]');
+        const originalText = button.textContent;
+        button.textContent = 'Submitting...';
+        button.disabled = true;
+
+        // Get form data
+        const formData = new FormData(form);
+        
+        // Submit the form
+        fetch(form.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Show success message
+            alert('Thank you! Your reservation has been submitted successfully.');
+            form.reset();
+        })
+        .catch(error => {
+            // Show error message
+            alert('Sorry, there was an error submitting your reservation. Please try again.');
+            console.error('Error:', error);
+        })
+        .finally(() => {
+            // Reset button state
+            button.textContent = originalText;
+            button.disabled = false;
+        });
+    });
+});
 </script>
 
 </body>
